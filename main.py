@@ -1,6 +1,8 @@
 import pygame
 pygame.init()
 screen = pygame.display.set_mode([500, 600])
+pygame.display.set_icon(pygame.image.load("icon.png"))
+pygame.display.set_caption('PyPaint')
 running = True
 currentColour = (0,0,0)
 brush = "circle"
@@ -8,6 +10,7 @@ cursorX = 0
 cursorY = 0
 size = 15
 isEraser = False
+canvas = screen.subsurface(0,0,500,500)
 pygame.font.init()
 text = pygame.font.SysFont('Courier New', 45)
 def ui():
@@ -59,7 +62,7 @@ while running:
                 elif isEraser == True:
                     isEraser = False
             if event.key == pygame.K_SPACE:
-                pygame.image.save(screen, "art.jpeg")
+                pygame.image.save(canvas, "art.jpeg")
 
     buttons = pygame.mouse.get_pressed()
     if any(buttons):
