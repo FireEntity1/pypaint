@@ -7,14 +7,22 @@ brush = "circle"
 cursorX = 0
 cursorY = 0
 size = 15
-
+isEraser = False
+pygame.font.init()
+text = pygame.font.SysFont('Courier New', 45)
 def ui():
     screen.fill((150,150,150), rect=(0,500,500,100))
     screen.fill((currentColour), rect=(0,500,100,100))
     if brush == "circle":
         pygame.draw.circle(screen, currentColour, (250,550), 25,25)
     elif brush == "square":
-        pygame.draw.rect(screen, currentColour, pygame.Rect(250,525,40,40))
+        pygame.draw.rect(screen, currentColour, pygame.Rect(225,525,50,50))
+    elif brush == "line":
+        pygame.draw.rect(screen, currentColour, pygame.Rect(225,550,50,10))
+    if isEraser == True:
+        pygame.draw.circle(screen, (255,255,255), (250,550), 25,25)
+
+    screen.blit(text.render(str(size), False, (0, 0, 0)), (425,525))
 
 screen.fill((255, 255, 255))
 
@@ -45,14 +53,25 @@ while running:
                 size += 2
             if event.key == pygame.K_MINUS:
                 size -= 2
+            if event.key == pygame.K_e:
+                if isEraser == False:
+                    isEraser = True
+                elif isEraser == True:
+                    isEraser = False
+            if event.key == pygame.K_SPACE:
+                pygame.image.save(screen, "art.jpeg")
+
     buttons = pygame.mouse.get_pressed()
     if any(buttons):
-        if brush == "circle":
+        if brush == "circle" and isEraser == False:
             pygame.draw.circle(screen, currentColour, cursor, size)
-        if brush == "square":
+        if brush == "square" and isEraser == False:
             pygame.draw.rect(screen, currentColour, pygame.Rect(cursorX-(0.5*size), cursorY-(0.5*size), size, size))
-        if brush == "line":
+        if brush == "line" and isEraser == False:
             pygame.draw.line(screen, currentColour, cursor, (cursorX + size, cursorY), int((size/2)))
+        if isEraser == True:
+            pygame.draw.circle(screen, (255,255,255), cursor, size)
+
 
     ui()
     cursorX = pygame.mouse.get_pos()[0]
