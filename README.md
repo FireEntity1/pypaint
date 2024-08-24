@@ -1,7 +1,9 @@
 # PyPaint!
 
 A basic paint program made using PyGame
-The only required dependancy is pygame
+
+Clone the repository and run the Python file!
+The only required dependancy is PyGame :)
 
 ## Keybinds
 
