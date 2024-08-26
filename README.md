@@ -12,3 +12,5 @@ The only required dependancy is PyGame :)
 - E - Toggle eraser
 - Backspace - Clear Drawing
 - Space - Save drawing as JPG
+
+![image](https://github.com/user-attachments/assets/e169fbd6-66fc-4d59-a9c8-edbaec6c7020)
