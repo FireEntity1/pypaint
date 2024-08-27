@@ -2,8 +2,8 @@
 
 A basic paint program made using PyGame
 
-Clone the repository and run the Python file!
-The only required dependancy is PyGame :)
+Head to releases and download "release.zip", extract it and run `main.exe`!
+The only dependancy is PyGame :)
 
 ## Keybinds
 
